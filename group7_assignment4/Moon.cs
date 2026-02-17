@@ -19,9 +19,9 @@ public class Moon
         this.texture = texture;
 
         orbitAngle = 0f;
-        orbitSpeed = 1.5f;
-        orbitRadius = 70f;
-        scale = 0.08f;
+        orbitSpeed = 1.0f;
+        orbitRadius = 20f;
+        scale = 0.05f;
     }
 
     public void Update(GameTime gameTime)

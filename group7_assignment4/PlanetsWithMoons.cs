@@ -19,10 +19,14 @@ public class PlanetWithMoons
     private float planetScale;
     private Color planetColor;
 
+
     // Moon children
     private List<Moon> moons;
+    private List<float> moonAngleOffsets;
 
-    // Constructor
+    private float moonBaseAngle;
+    private float moonPairSeparation;
+    
     public PlanetWithMoons(
         Texture2D planetTexture,
         Texture2D moonTexture,
@@ -43,17 +47,23 @@ public class PlanetWithMoons
         this.planetScale = planetScale;
         this.planetColor = planetColor;
 
-        orbitAngle = 0f;
+        orbitAngle = (float)(new Random().NextDouble() * Math.PI * 2);
         selfRotation = 0f;
 
+        moonBaseAngle = 0f;
+        moonPairSeparation = 0.7f; // radians; keeps 2 moons traveling as a visible pair
+
         moons = new List<Moon>();
+        moonAngleOffsets = new List<float>();
+
         for (int i = 0; i < moonCount; i++)
         {
             moons.Add(new Moon(moonTexture));
+
+            moonAngleOffsets.Add(i * moonPairSeparation);
         }
     }
-
-    // Update
+    
     public void Update(GameTime gameTime)
     {
         float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -61,26 +71,36 @@ public class PlanetWithMoons
         orbitAngle += orbitSpeed * dt;
         selfRotation += rotationSpeed * dt;
 
-        foreach (Moon moon in moons)
+        moonBaseAngle += 1.2f * dt;
+
+        for (int i = 0; i < moons.Count; i++)
         {
-            moon.Update(gameTime);
+            moons[i].Update(gameTime);
         }
     }
 
-    // Draw
     public void Draw(SpriteBatch spriteBatch)
     {
-        // Planet position relative to the sun
-        Vector2 planetPosition = sunPosition +
-            new Vector2(
-                MathF.Cos(orbitAngle),
-                MathF.Sin(orbitAngle)
-            ) * orbitRadius;
+        Matrix orbitRotation = Matrix.CreateRotationZ(orbitAngle);
+        Matrix orbitTranslation = Matrix.CreateTranslation(orbitRadius, 0f, 0f);
+        Matrix moveToSun = Matrix.CreateTranslation(sunPosition.X, sunPosition.Y, 0f);
 
-        // Draw planet
+        // Order matters: local → orbit → world
+        Matrix world =
+            orbitTranslation *
+            orbitRotation *
+            moveToSun;
+
+        // End any existing batch before applying transform
+        spriteBatch.End();
+
+        // Begin with transform matrix
+        spriteBatch.Begin(transformMatrix: world);
+
+        // Draw planet at local origin (0,0) because matrix handles positioning
         spriteBatch.Draw(
             planetTexture,
-            planetPosition,
+            Vector2.Zero,
             null,
             planetColor,
             selfRotation,
@@ -93,10 +113,30 @@ public class PlanetWithMoons
             0f
         );
 
-        // Draw moons (hierarchical children)
-        foreach (Moon moon in moons)
+        for (int i = 0; i < moons.Count; i++)
         {
-            moon.Draw(spriteBatch, planetPosition);
+            // Keep moons close to the planet by basing orbit distance on the planet's rendered size
+            float moonOrbitRadius = (planetTexture.Width * planetScale * 0.01f);
+            float moonAngle = moonBaseAngle + moonAngleOffsets[i];
+
+            Matrix moonOrbit =
+                Matrix.CreateRotationZ(moonAngle) *
+                Matrix.CreateTranslation(moonOrbitRadius, 0f, 0f);
+
+            // Draw this moon using a child transform under the planet's world transform
+            spriteBatch.End();
+            spriteBatch.Begin(transformMatrix: moonOrbit * world);
+
+            moons[i].Draw(spriteBatch, Vector2.Zero);
+
+            // Restore the planet transform for the next moon / any additional drawing
+            spriteBatch.End();
+            spriteBatch.Begin(transformMatrix: world);
         }
+
+        spriteBatch.End();
+
+        // Restart normal batch so other objects render correctly
+        spriteBatch.Begin();
     }
 }
