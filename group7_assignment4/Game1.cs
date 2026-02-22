@@ -21,6 +21,13 @@ public class Game1 : Game
     private Texture2D _moonTexture;
     private Texture2D _sunTexture;
     private Sun _sun;
+    
+    // star textures
+    private Texture2D _core;
+    private Texture2D _glow;
+    private Star _star1;
+    private Star _shootingStar;
+    
     // audio
     private SoundEffect _twinkle;
     private Song _space;
@@ -68,6 +75,8 @@ public class Game1 : Game
         _venus = Content.Load<Texture2D>("images/venus");
         _earth = Content.Load<Texture2D>("images/earth");
         _mars = Content.Load<Texture2D>("images/mars");
+        _core = Content.Load<Texture2D>("images/star_core");
+        _glow = Content.Load<Texture2D>("images/star_glow");
         // Load audio
         _twinkle = Content.Load<SoundEffect>("audio/twinkle");
         _space = Content.Load<Song>("audio/space");
@@ -139,6 +148,27 @@ public class Game1 : Game
             planetColor: Color.White,
             moonCount: 2
         ));
+        
+        // Star 1 (glowing star)
+        _star1 = new Star(
+            _core,
+            _glow,
+            new Vector2(200, 150),
+            0.4f,
+            0.8f,
+            2f,
+            Vector2.Zero);
+        
+        // Star 2 (shooting star)
+        _shootingStar = new Star(
+            _core,
+            _glow,
+            new Vector2(0, 50),
+            0.35f,
+            1f,
+            4f,
+            new Vector2(250f, 150f)
+        );
     }
 
     protected override void Update(GameTime gameTime)
@@ -153,6 +183,10 @@ public class Game1 : Game
         {
             planet.Update(gameTime);
         }
+        
+        // Update each star
+        _star1.Update(gameTime);
+        _shootingStar.Update(gameTime);
 
         base.Update(gameTime);
     }
