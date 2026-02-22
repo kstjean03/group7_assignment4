@@ -57,6 +57,7 @@ public class Star
     {
         float glowAlpha = (float)Math.Abs(Math.Sin(phase));
         
+        // Draw the outer glow
         spriteBatch.Draw(
             glow,
             Position,
@@ -68,7 +69,8 @@ public class Star
             SpriteEffects.None,
             0f
         );
-
+        
+        // Draw the core
         spriteBatch.Draw(
             core,
             Position,

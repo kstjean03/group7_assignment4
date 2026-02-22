@@ -26,10 +26,12 @@ public class Game1 : Game
     private Texture2D _core;
     private Texture2D _glow;
     private Star _star1;
+    private Star _star2;
     private Star _shootingStar;
     
     // audio
     private SoundEffect _twinkle;
+    private bool _playedTwinkle = false;
     private Song _space;
 
     private List<PlanetWithMoons> _planets;
@@ -83,6 +85,7 @@ public class Game1 : Game
         MediaPlayer.IsRepeating = true;
         MediaPlayer.Volume = 0.25f;
         MediaPlayer.Play(_space);
+        
         // Center of the screen acts as the sun
         _sunPosition = new Vector2(
             GraphicsDevice.Viewport.Width / 2f,
@@ -149,25 +152,36 @@ public class Game1 : Game
             moonCount: 2
         ));
         
-        // Star 1 (glowing star)
+        // Star 1
         _star1 = new Star(
             _core,
             _glow,
-            new Vector2(200, 150),
+            new Vector2(250, 200),
             0.4f,
             0.8f,
-            2f,
+            3f,
             Vector2.Zero);
         
-        // Star 2 (shooting star)
+        // Star 2
+        _star2 = new Star(
+            _core,
+            _glow,
+            new Vector2(900, 750),
+            0.3f,
+            0.8f,
+            3f,
+            Vector2.Zero);
+        
+        
+        // Shooting star
         _shootingStar = new Star(
             _core,
             _glow,
-            new Vector2(0, 50),
+            new Vector2(0, 900),
             0.35f,
             1f,
-            4f,
-            new Vector2(250f, 150f)
+            0f,
+            new Vector2(250f, -150f)
         );
     }
 
@@ -186,7 +200,16 @@ public class Game1 : Game
         
         // Update each star
         _star1.Update(gameTime);
+        _star2.Update(gameTime);
+        
+        // Update shooting star and play twinkle effect when on screen
         _shootingStar.Update(gameTime);
+        if (_shootingStar.Position.X > 0f && !_playedTwinkle)
+        {
+            _twinkle.Play();
+            _playedTwinkle = true;
+        }
+        
 
         base.Update(gameTime);
     }
@@ -231,6 +254,11 @@ public class Game1 : Game
         GraphicsDevice.Clear(Color.Black);
 
         _spriteBatch.Begin();
+        
+        // Draw stars
+        _star1.Draw(_spriteBatch);
+        _star2.Draw(_spriteBatch);
+        _shootingStar.Draw(_spriteBatch);
 
         // Draw faint orbit paths first (behind planets)
         Color orbitColor = new Color(150, 150, 180) * 0.2f;
