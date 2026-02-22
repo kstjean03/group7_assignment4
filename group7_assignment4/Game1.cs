@@ -28,6 +28,8 @@ public class Game1 : Game
     private List<PlanetWithMoons> _planets;
     private Vector2 _sunPosition;
 
+    private Texture2D _pixel;
+
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -55,6 +57,9 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+        _pixel = new Texture2D(GraphicsDevice, 1, 1);
+        _pixel.SetData(new[] { Color.White });
 
         // Load textures
         _moonTexture = Content.Load<Texture2D>("images/moon");
@@ -88,7 +93,7 @@ public class Game1 : Game
             _mercury,
             _moonTexture,
             _sunPosition,
-            orbitRadius: 70f,
+            orbitRadius: 55f,
             orbitSpeed: 1.2f,
             rotationSpeed: 1.0f,
             planetScale: 0.006f,
@@ -101,7 +106,7 @@ public class Game1 : Game
             _venus,
             _moonTexture,
             _sunPosition,
-            orbitRadius: 110f,
+            orbitRadius: 80f,
             orbitSpeed: 1.0f,
             rotationSpeed: 1.0f,
             planetScale: 0.05f,
@@ -114,8 +119,8 @@ public class Game1 : Game
             _earth,
             _moonTexture,
             _sunPosition,
-            orbitRadius: 160f,
-            orbitSpeed: 0.6f,
+            orbitRadius: 115f,
+            orbitSpeed: 0.7f,
             rotationSpeed: 1.0f,
             planetScale: 0.04f,
             planetColor: Color.White,
@@ -127,8 +132,8 @@ public class Game1 : Game
             _mars,
             _moonTexture,
             _sunPosition,
-            orbitRadius: 230f,
-            orbitSpeed: 0.7f,
+            orbitRadius: 150f,
+            orbitSpeed: 0.5f,
             rotationSpeed: 1.0f,
             planetScale: 0.03f,
             planetColor: Color.White,
@@ -152,14 +157,58 @@ public class Game1 : Game
         base.Update(gameTime);
     }
 
+    private void DrawOrbit(Vector2 center, float radius, Color color)
+    {
+        const int segments = 120;
+        float increment = MathHelper.TwoPi / segments;
+
+        Vector2 prev = center + new Vector2(radius, 0f);
+
+        for (int i = 1; i <= segments; i++)
+        {
+            float angle = increment * i;
+            Vector2 next = center + new Vector2(
+                MathF.Cos(angle) * radius,
+                MathF.Sin(angle) * radius
+            );
+
+            Vector2 edge = next - prev;
+            float length = edge.Length();
+            float rotation = MathF.Atan2(edge.Y, edge.X);
+
+            _spriteBatch.Draw(
+                _pixel,
+                prev,
+                null,
+                color,
+                rotation,
+                Vector2.Zero,
+                new Vector2(length, 1f),
+                SpriteEffects.None,
+                0f
+            );
+
+            prev = next;
+        }
+    }
+
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.Black);
 
         _spriteBatch.Begin();
 
-        // Draw sun first as the root of the solar system hierarchy
+        // Draw faint orbit paths first (behind planets)
+        Color orbitColor = new Color(150, 150, 180) * 0.2f;
+
+        DrawOrbit(_sunPosition, 55f, orbitColor);   // Mercury
+        DrawOrbit(_sunPosition, 80f, orbitColor);   // Venus
+        DrawOrbit(_sunPosition, 115f, orbitColor);  // Earth
+        DrawOrbit(_sunPosition, 150f, orbitColor);  // Mars
+
+        // Draw sun and planets
         _sun.Draw(_spriteBatch);
+
         foreach (PlanetWithMoons planet in _planets)
         {
             planet.Draw(_spriteBatch);
