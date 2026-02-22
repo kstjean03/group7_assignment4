@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace group7_assignment4;
 
@@ -18,8 +20,10 @@ public class Game1 : Game
     // moon + sun textures
     private Texture2D _moonTexture;
     private Texture2D _sunTexture;
-    
     private Sun _sun;
+    // audio
+    private SoundEffect _twinkle;
+    private Song _space;
 
     private List<PlanetWithMoons> _planets;
     private Vector2 _sunPosition;
@@ -59,7 +63,12 @@ public class Game1 : Game
         _venus = Content.Load<Texture2D>("images/venus");
         _earth = Content.Load<Texture2D>("images/earth");
         _mars = Content.Load<Texture2D>("images/mars");
-        
+        // Load audio
+        _twinkle = Content.Load<SoundEffect>("audio/twinkle");
+        _space = Content.Load<Song>("audio/space");
+        MediaPlayer.IsRepeating = true;
+        MediaPlayer.Volume = 0.25f;
+        MediaPlayer.Play(_space);
         // Center of the screen acts as the sun
         _sunPosition = new Vector2(
             GraphicsDevice.Viewport.Width / 2f,

@@ -13,6 +13,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin audio/space.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:audio/space.mp3
+
+#begin audio/twinkle.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:audio/twinkle.mp3
+
 #begin images/earth.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
