@@ -205,8 +205,9 @@ public class Game1 : Game
             new Vector2(0, 900),
             0.35f,
             1f,
-            0f,
-            new Vector2(250f, -150f)
+            .5f,
+            new Vector2(250f, -150f),
+            true
         );
         
         Vector2 sunPosition = new Vector2(400, 300);
@@ -281,7 +282,7 @@ public class Game1 : Game
         _shootingStar.Update(gameTime);
         if (_shootingStar.Position.X > 0f && !_playedTwinkle)
         {
-            _twinkle.Play();
+            _twinkle.Play(.75f,0f,0f);
             _playedTwinkle = true;
         }
         
