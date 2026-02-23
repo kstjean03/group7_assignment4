@@ -285,7 +285,6 @@ public class Game1 : Game
             _playedTwinkle = true;
         }
         
-
         //Update ringed planets
         jupiter.Update(gameTime);
         saturn.Update(gameTime);
@@ -353,8 +352,7 @@ public class Game1 : Game
         DrawOrbit(_sunPosition, 260f, orbitColor);   // Saturn
         DrawOrbit(_sunPosition, 330f, orbitColor);   // Uranus
         DrawOrbit(_sunPosition, 400f, orbitColor);   // Neptune
-
-
+        
         // Draw sun and planets
         _sun.Draw(_spriteBatch);
 
