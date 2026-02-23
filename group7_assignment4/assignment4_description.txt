@@ -1,0 +1,12 @@
+This animation depicts the solar system in a 2D view. The sun is situated in the center, with the 8 planets orbiting it. Shooting stars and stationary stars can be seen.
+
+Sadie - Planets with moons (mercury - mars)
+Planets move in a circle around the sun, have various sizes, textures, orbit speeds, and rotation speeds. Moons are under planets in the hierarchy and have different counts, speeds, and rotations as well.
+
+Jacob - Planets with rings (Jupiter - Neptune)
+Planets move in a circle around the sun, have various sizes, textures, orbit speeds, and rotation speeds. Rings are under planets in the hierarchy but pulse at different rates, and have different sizes and textures.
+
+Katherine - Stars and shooting stars
+Stars that do not move pulse varying their brightness in different sizes. Shooting stars move across the screen in various speeds. The glow of the stars is under the core of the star in the hierarchy.
+
+There were no unexpected classes.

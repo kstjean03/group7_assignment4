@@ -1,1 +1,1 @@
-*insert running instructions here*
+To run the program, simply open the .sln file and hit run! There are no interactive controls.
