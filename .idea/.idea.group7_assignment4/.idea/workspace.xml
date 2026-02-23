@@ -4,6 +4,8 @@
     <projectFile>group7_assignment4/group7_assignment4.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="97fae56f-641a-4b4f-80a5-0c7217b0607c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/group7_assignment4/README.txt" afterDir="false" />
     <list default="true" id="3f1c6fff-4f63-4b78-a6ad-6c6d4669822d" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/group7_assignment4/Ring.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/group7_assignment4/Content/Content.mgcb" beforeDir="false" afterPath="$PROJECT_DIR$/group7_assignment4/Content/Content.mgcb" afterDir="false" />
@@ -40,10 +42,40 @@
   "associatedIndex": 4
 }]]></component>
   <component name="ProjectId" id="3A2tOwNkcVnyv8u3JiT2uzSJE9o" />
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kstjean03&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/kstjean03/group7_assignment4.git&quot;,
+    &quot;accountId&quot;: &quot;cfc3eabc-f4b3-4df1-a2c4-a04bb26745d3&quot;
+  }
+}</component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="39aHPtUKUauy5SBtwXMFbC9qwNR" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.group7_assignment4.executor&quot;: &quot;Run&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Project.group7_assignment4.executor": "Run",
@@ -54,6 +86,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="group7_assignment4" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -81,15 +114,64 @@
     <task active="true" id="Default" summary="Default task">
       <changelist id="3f1c6fff-4f63-4b78-a6ad-6c6d4669822d" name="Changes" comment="" />
       <created>1771802467663</created>
+      <changelist id="97fae56f-641a-4b4f-80a5-0c7217b0607c" name="Changes" comment="" />
+      <created>1770927241709</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+      <updated>1770927241709</updated>
+      <workItem from="1770927243199" duration="2199000" />
+      <workItem from="1771614393868" duration="123000" />
+      <workItem from="1771793108676" duration="5866000" />
+      <workItem from="1771799407138" duration="435000" />
+    </task>
+    <task id="LOCAL-00001" summary="Created star CS class (still need to add sound) and updated Game1.cs to include star class">
+      <option name="closed" value="true" />
+      <created>1771797046852</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1771797046852</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Implemented star class &amp; created 3 stars, featuring a twinkle sound following the shooting star">
+      <option name="closed" value="true" />
+      <created>1771799218120</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1771799218120</updated>
       <updated>1771802467663</updated>
       <workItem from="1771802470571" duration="6315000" />
     </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Created star CS class (still need to add sound) and updated Game1.cs to include star class" />
+    <MESSAGE value="Implemented star class &amp; created 3 stars, featuring a twinkle sound following the shooting star" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented star class &amp; created 3 stars, featuring a twinkle sound following the shooting star" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>
