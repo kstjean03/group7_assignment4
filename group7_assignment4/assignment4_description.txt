@@ -1,12 +1,35 @@
-This animation depicts the solar system in a 2D view. The sun is situated in the center, with the 8 planets orbiting it. Shooting stars and stationary stars can be seen.
+NAMES:
+Jacob Lin
+Katherine St Jean
+Sadie Zielinski
 
-Sadie - Planets with moons (mercury - mars)
-Planets move in a circle around the sun, have various sizes, textures, orbit speeds, and rotation speeds. Moons are under planets in the hierarchy and have different counts, speeds, and rotations as well.
+EIDS:
+snz298
+jel3928
+kfs573 
 
-Jacob - Planets with rings (Jupiter - Neptune)
-Planets move in a circle around the sun, have various sizes, textures, orbit speeds, and rotation speeds. Rings are under planets in the hierarchy but pulse at different rates, and have different sizes and textures.
+Assignment 4
 
-Katherine - Stars and shooting stars
-Stars that do not move pulse varying their brightness in different sizes. Shooting stars move across the screen in various speeds. The glow of the stars is under the core of the star in the hierarchy.
+DESCRIPTION: 
+Our final animation shows a 2D solar system scene. The sun is placed in the center of the screen, and all eight planets orbit around it at different speeds and distances. The animation runs continuously in a loop.
+Each planet rotates around the sun while also spinning on its own axis. Some planets have moons, and some have rings. Moons orbit their parent planets, and rings rotate or pulse around their planets. This demonstrates hierarchical transformations because moons depend on planets, and planets depend on the sun.
+The background includes stars. Some stars stay in place and pulse to look like they are twinkling. Other stars move diagonally across the screen as shooting stars. Each star is made of a core and a glow, where the glow is a child object that animates separately.
+We also included background space audio and a sound effect that plays when a shooting star appears.
 
-There were no unexpected classes.
+
+GROUP MEMBER RESPONSIBILITIES:
+
+Sadie Zielinski – PlanetWithMoons Class (Mercury-Mars)
+Sadie created the PlanetWithMoons class where planets move in a circle around the sun, have various sizes, textures, orbit speeds, and rotation speeds. Moons are under planets in the hierarchy and have different counts, speeds, and rotations as well. Sadie also implemented the space background music for the extra credit.
+
+Jacob Lin – PlanetWithRings Class (Jupiter–Neptune)
+Jacob created the PlanetWithRings class where planets move in a circle around the sun, have various sizes, textures, orbit speeds, and rotation speeds. Rings are under planets in the hierarchy but pulse at different rates, and have different sizes and textures. Jacob also created the README and developed the description.
+
+Katherine St Jean - Star Class
+Katherine created the star class where stars that do not move pulse varying their brightness in different sizes. Shooting stars move across the screen while an audio plays. The glow of the stars is under the core of the star in the hierarchy. Katherine also helped develop the assignment description
+
+There were no unexpected challenges with this project. Since our last project, we have begun using Git to share our work. This has made collaboration within the group much easier.
+
+
+EXTRA CREDIT:
+- We added two forms of sound to the project. The first sound is ambient audio from space, which acts as background music. The second audio is a twinkling noise, utilized by the Star class, that plays when a shooting star appears on screen. 
